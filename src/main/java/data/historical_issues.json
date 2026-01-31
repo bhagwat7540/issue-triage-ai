@@ -1,0 +1,20 @@
+[
+  {
+    "text": "Payment failures for EU customers",
+    "priority": "P0",
+    "team": "Payments",
+    "resolutionTimeHours": 5
+  },
+  {
+    "text": "Login latency spikes during peak hours",
+    "priority": "P1",
+    "team": "Auth",
+    "resolutionTimeHours": 24
+  },
+  {
+    "text": "Request for CSV export feature",
+    "priority": "P3",
+    "team": "Platform",
+    "resolutionTimeHours": 48
+  }
+]
