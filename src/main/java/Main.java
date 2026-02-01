@@ -7,6 +7,8 @@ import llm.LLMClient;
 import llm.LLMClientInterface;
 import llm.MockLLMClient;
 import rag.EmbeddingService;
+import rag.EmbeddingServiceInterface;
+import rag.MockEmbeddingService;
 import rag.SimilarIssueFinderService;
 import repository.HistoricalIssueRepository;
 
@@ -35,9 +37,10 @@ public class Main {
         System.out.println("Component: " + features.component);
         System.out.println("Urgency: " + features.urgencyHint);
 
-        EmbeddingService embeddingClient = new EmbeddingService();
-        HistoricalIssueRepository repo = new HistoricalIssueRepository(embeddingClient);
-        SimilarIssueFinderService finder = new SimilarIssueFinderService(repo, embeddingClient);
+//        EmbeddingServiceInterface embeddingService = new EmbeddingService(apiKey);
+        EmbeddingServiceInterface embeddingService = new MockEmbeddingService();
+        HistoricalIssueRepository repo = new HistoricalIssueRepository(embeddingService);
+        SimilarIssueFinderService finder = new SimilarIssueFinderService(repo, embeddingService);
 
         List<HistoricalIssue> similar =
                 finder.findSimilar(request.title + " " + request.description, 2);

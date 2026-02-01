@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
 
 public class SimilarIssueFinderService {
     private final HistoricalIssueRepository repository;
-    private final EmbeddingService embeddingClient;
+    private final EmbeddingServiceInterface embeddingService;
 
-    public SimilarIssueFinderService(HistoricalIssueRepository repository, EmbeddingService embeddingClient) {
+    public SimilarIssueFinderService(HistoricalIssueRepository repository, EmbeddingServiceInterface embeddingClient) {
         this.repository = repository;
-        this.embeddingClient = embeddingClient;
+        this.embeddingService = embeddingClient;
     }
 
     public List<HistoricalIssue> findSimilar(String text, int k) {
-        float[] queryEmbedding = embeddingClient.embed(text);
+        float[] queryEmbedding = embeddingService.embed(text);
 
         return repository.getHistoricalIssues().stream()
                 .sorted(Comparator.comparingDouble(
