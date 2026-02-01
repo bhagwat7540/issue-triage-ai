@@ -16,6 +16,7 @@ public class SimilarIssueFinderService {
         this.embeddingService = embeddingClient;
     }
 
+    //VECTOR SEARCH
     public List<HistoricalIssue> findSimilar(String text, int k) {
         float[] queryEmbedding = embeddingService.embed(text);
 
